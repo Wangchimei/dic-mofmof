@@ -1,15 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Apartments</h1>
+<h1>一覧</h1>
+<hr>
+<h2>物件一覧</h2>
 
-<table>
+<div class="row col-md-6 col-md-offset-2"></div>
+<table class="table table-hover">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Rent</th>
-      <th>Address</th>
-      <th>Year</th>
-      <th>Note</th>
+      <th>物件名</th>
+      <th>賃料</th>
+      <th>住所</th>
+      <th>築年数</th>
+      <th>備考</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,14 +25,15 @@
         <td><%= apartment.address %></td>
         <td><%= apartment.year %></td>
         <td><%= apartment.note %></td>
-        <td><%= link_to 'Show', apartment %></td>
-        <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
-        <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="text-center pb-0"><%= link_to '詳細', apartment, class:"btn btn-light btn-xs" %></td>
+        <td class="text-center"><%= link_to '編集', edit_apartment_path(apartment), class:"btn btn-light btn-xs" %></td>
+        <td class="text-center"><%= link_to '削除', apartment, method: :delete, data: { confirm: '削除しますか？' } , class:"btn btn-light btn-xs"%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
 
-<%= link_to 'New Apartment', new_apartment_path %>
+<%= link_to '物件を登録する', new_apartment_path, class:"btn btn-light" %>
