@@ -1,29 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @apartment.name %>
-</p>
+<h1>閲覧</h1>
+<hr>
 
-<p>
-  <strong>Rent:</strong>
-  <%= @apartment.rent %>
-</p>
+<table class="table">
+  <tr>
+    <th>物件名:</th>
+    <td><%= @apartment.name %></td>
+  </tr>
+  <tr>
+    <th>賃料:</th>
+    <td><%= @apartment.rent %> 円</td>
+  </tr>
+  <tr>
+    <th>住所:</th>
+    <td><%= @apartment.address %></td>
+  </tr>
+  <tr>
+    <th>築年数:</th>
+    <td><%= @apartment.year %> 年</td>
+  </tr>
+  <tr>
+    <th>備考:</th>
+    <td><%= @apartment.note %></td>
+  </tr>
+</table>
 
-<p>
-  <strong>Address:</strong>
-  <%= @apartment.address %>
-</p>
+<hr>
 
-<p>
-  <strong>Year:</strong>
-  <%= @apartment.year %>
-</p>
+<% @apartment.stations.each_with_index do |station , n| %>
+  <table class="table">
+    <h4 class="h4">最寄駅 <%="#{n+1}"%></h4>
+    <tr>
+      <th>路線名:</th>
+      <td><%= station.line %></td>
+    </tr>
+    <tr>
+      <th>駅名:</th>
+      <td><%= station.station %></td>
+    </tr>
+    <tr>
+      <th>徒歩分数:</th>
+      <td><%= station.distance %> 分</td>
+    </tr>
+  </table>
+<% end %>
 
-<p>
-  <strong>Note:</strong>
-  <%= @apartment.note %>
-</p>
+<hr>
 
-<%= link_to 'Edit', edit_apartment_path(@apartment) %> |
-<%= link_to 'Back', apartments_path %>
+<%= link_to '編集', edit_apartment_path(@apartment) %> |
+<%= link_to '戻る', apartments_path %>
