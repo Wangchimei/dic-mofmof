@@ -15,10 +15,12 @@ class ApartmentsController < ApplicationController
   # GET /apartments/new
   def new
     @apartment = Apartment.new
+    2.times {@apartment.stations.build}
   end
 
   # GET /apartments/1/edit
   def edit
+    1.times {@apartment.stations.build}
   end
 
   # POST /apartments
@@ -69,6 +71,6 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:name, :rent, :address, :year, :note)
+      params.require(:apartment).permit(:name, :rent, :address, :year, :note, stations_attributes: [:line, :station, :distance, :apartment_id, :count])
     end
 end
