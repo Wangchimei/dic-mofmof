@@ -38,9 +38,11 @@
 
 <hr>
 
+  <%count=0%>
   <%= f.fields_for :stations do |s| %>
     <br>
-    <h4>最寄駅<%1%></h4>
+    <%count+=1%>
+    <h4>最寄駅<%=count%></h4>
     <div class="field">
       <%= s.label :line, "路線名" %>
       <%= s.text_field :line %>
